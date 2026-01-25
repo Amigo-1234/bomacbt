@@ -42,19 +42,19 @@ body {
     url("../images/candi.jpg") center/cover no-repeat;
 }
 
-.hero-signup {
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
-    url("../images/signup-hero.jpg") center/cover no-repeat;
-}
-
 .hero-login {
   background:
     linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
-    url("../images/login-hero.jpg") center/cover no-repeat;
+    url("../images/login.jpg") center/cover no-repeat;
 }
 
 .hero-exam {
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+    url("../images/exam.jpg") center/cover no-repeat;
+}
+
+.hero- {
   background:
     linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
     url("../images/exam-hero.jpg") center/cover no-repeat;
