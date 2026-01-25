@@ -35,6 +35,32 @@ body {
   position: relative;
 }
 
+/* HERO VARIANTS */
+.hero-candi {
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+    url("../images/candi.jpg") center/cover no-repeat;
+}
+
+.hero-signup {
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+    url("../images/signup-hero.jpg") center/cover no-repeat;
+}
+
+.hero-login {
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+    url("../images/login-hero.jpg") center/cover no-repeat;
+}
+
+.hero-exam {
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
+    url("../images/exam-hero.jpg") center/cover no-repeat;
+}
+
+
 .top-bar {
   padding: 25px 40px;
 }
@@ -196,4 +222,78 @@ footer {
 
 #page-transition.active {
   opacity: 1;
+}
+
+/* FORM NOTE */
+.form-note {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.form-note a {
+  color: #f9a602;
+  font-weight: 500;
+}
+
+/* =========================
+   FORMS (LOGIN / SIGNUP)
+========================= */
+
+.form-wrapper {
+  max-width: 420px;
+  margin: auto;
+}
+
+.login-form {
+  background: rgba(255,255,255,0.05);
+  padding: 40px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #f9a602;
+}
+
+/* PRIMARY BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #f9a602;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #ffd166;
+  transform: translateY(-2px);
 }
