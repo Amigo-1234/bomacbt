@@ -54,10 +54,10 @@ body {
     url("../images/exam.jpg") center/cover no-repeat;
 }
 
-.hero- {
+.hero-instructions {
   background:
     linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
-    url("../images/exam-hero.jpg") center/cover no-repeat;
+    url("../images/instruct.jpg") center/cover no-repeat;
 }
 
 
@@ -296,4 +296,27 @@ footer {
 .primary-btn:hover {
   background: #ffd166;
   transform: translateY(-2px);
+}
+
+/* INSTRUCTIONS LIST */
+.instructions-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.instructions-list li {
+  padding-left: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.instructions-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #f9a602;
+  font-size: 1.2rem;
 }
