@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BIA CBT – Examination</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/exam.css">
+</head>
+<body>
+
+  <!-- EXAM HEADER -->
+  <header class="exam-header">
+    <div class="logo-text">
+      <span>BIA</span><small>CBT</small>
+    </div>
+
+    <div class="timer">
+      Time Left: <strong>00:45:00</strong>
+    </div>
+  </header>
+
+  <!-- EXAM LAYOUT -->
+  <main class="exam-layout">
+
+    <!-- QUESTION NAV -->
+    <aside class="question-nav">
+      <h4>Questions</h4>
+      <div class="question-grid">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <!-- continues dynamically later -->
+      </div>
+    </aside>
+
+    <!-- QUESTION AREA -->
+    <section class="question-area">
+
+      <div class="question-number">
+        Question 1
+      </div>
+
+      <div class="question-text">
+        Which of the following is the correct expansion of JUPEB?
+      </div>
+
+      <div class="options">
+        <label class="option">
+          <input type="radio" name="q1">
+          <span>Joint Universities Preliminary Examination Board</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1">
+          <span>Junior University Pre-Entrance Board</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1">
+          <span>Joint Universal Primary Education Board</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1">
+          <span>Judicial University Pre-Education Body</span>
+        </label>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="secondary-btn">Previous</button>
+        <button class="primary-btn">Next</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SUBMIT -->
+  <footer class="exam-footer">
+    <button class="danger-btn">Submit Exam</button>
+  </footer>
+
+</body>
+</html>
