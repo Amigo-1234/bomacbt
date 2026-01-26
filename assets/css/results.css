@@ -1,0 +1,68 @@
+/* RESULTS SECTION */
+.results-section {
+  padding: 90px 20px;
+  background: linear-gradient(180deg, #0b0202, #2a0505);
+}
+
+.results-grid {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+/* RESULT CARD */
+.result-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 18px;
+  padding: 35px 25px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.result-card h3 {
+  margin-top: 18px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* CIRCULAR CHART */
+.circle {
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      #f9a602 calc(var(--percent) * 1%),
+      rgba(255,255,255,0.1) 0
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  background: #0b0202;
+  border-radius: 50%;
+}
+
+.circle span {
+  position: relative;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f9a602;
+}
+
+/* ACTION */
+.results-action {
+  text-align: center;
+  margin-top: 60px;
+}

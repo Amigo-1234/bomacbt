@@ -52,6 +52,31 @@
   color: #000;
 }
 
+/* QUESTION STATES */
+.question-grid button {
+  position: relative;
+  font-size: 0.85rem;
+}
+
+/* Answered */
+.question-grid button.answered {
+  background: rgba(249, 166, 2, 0.9);
+  color: #000;
+}
+
+/* Current */
+.question-grid button.current {
+  border: 2px solid #f9a602;
+  background: transparent;
+  color: #f9a602;
+}
+
+/* Unanswered (default) */
+.question-grid button.unanswered {
+  background: rgba(255,255,255,0.08);
+}
+
+
 /* QUESTION AREA */
 .question-area {
   padding: 45px;
@@ -92,6 +117,16 @@
   margin-top: 3px;
 }
 
+.option input:checked + span {
+  color: #f9a602;
+  font-weight: 500;
+}
+
+.option input:checked {
+  accent-color: #f9a602;
+}
+
+
 /* NAV BUTTONS */
 .nav-buttons {
   display: flex;
@@ -122,6 +157,13 @@
   background: #8b1c1c;
   color: #fff;
   font-weight: 600;
+}
+
+
+.exam-info {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 15px;
 }
 
 /* =========================
@@ -186,4 +228,12 @@
   .danger-btn {
     width: 100%;
   }
+}
+
+.danger-btn::after {
+  content: "Once submitted, answers cannot be changed";
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 6px;
+  color: #ffcccc;
 }
