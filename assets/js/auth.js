@@ -72,7 +72,7 @@ if (window.location.pathname.includes("candidate-login.html")) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert("Login successful!");
-      window.location.href = "enter-exam-code.html";
+      window.location.href = "dashboard.html";
 
     } catch (error) {
       alert(error.message);

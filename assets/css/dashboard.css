@@ -1,0 +1,150 @@
+/* =========================
+   DASHBOARD HEADER
+========================= */
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.dash-header h2 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.dash-header small {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.secondary-btn {
+  padding: 10px 26px;
+  border-radius: 30px;
+  border: 1px solid #f9a602;
+  background: transparent;
+  color: #f9a602;
+  cursor: pointer;
+}
+
+/* =========================
+   STATS GRID
+========================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 25px 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  color: #f9a602;
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* =========================
+   SUBJECT CARDS
+========================= */
+
+#subjectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.subject-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.subject-card:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+
+.subject-info h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.subject-info small {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.badge.pending {
+  background: rgba(249,166,2,0.2);
+  color: #f9a602;
+}
+
+.badge.done {
+  background: rgba(0,200,120,0.2);
+  color: #00c878;
+}
+
+/* =========================
+   SUBJECT ACTION BUTTON
+========================= */
+
+.subject-card .primary-btn {
+  width: auto;
+  padding: 8px 22px;
+  font-size: 0.85rem;
+}
+
+/* =========================
+   MOBILE TWEAKS
+========================= */
+
+@media (max-width: 600px) {
+  .dash-header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .subject-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .subject-card .primary-btn {
+    width: 100%;
+  }
+}

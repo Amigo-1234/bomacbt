@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JUPEB Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+<!-- DASHBOARD HEADER -->
+<header class="dash-header">
+  <div>
+    <h2 id="welcomeText">Welcome</h2>
+    <small>JUPEB Programme • 2025 / 2026 Session</small>
+  </div>
+
+  <button id="logoutBtn" class="secondary-btn">Logout</button>
+</header>
+
+<!-- DASHBOARD CONTENT -->
+<section class="auth-section" style="padding-top:40px;">
+  <div class="form-wrapper" style="max-width:900px;">
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3 id="subjectCount">3</h3>
+        <p>Registered Subjects</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="completedCount">0</h3>
+        <p>Completed Exams</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>JUPEB</h3>
+        <p>Programme</p>
+      </div>
+    </div>
+
+    <!-- SUBJECTS -->
+    <div class="login-form" style="margin-top:30px;">
+      <h4 style="margin-bottom:20px;">Your Subjects</h4>
+
+      <div id="subjectsList"></div>
+    </div>
+
+  </div>
+</section>
+
+<script type="module" src="assets/js/firebase-config.js"></script>
+<script type="module" src="assets/js/protect.js"></script>
+<script type="module" src="assets/js/dashboard.js"></script>
+
+</body>
+</html>
