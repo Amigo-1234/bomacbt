@@ -412,3 +412,91 @@ table tbody tr:hover .student-icon {
   gap: 10px;
   justify-content: flex-start;
 }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: #120303;
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-size: 1.2rem;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  display: grid;
+  gap: 14px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.detail-row span {
+  color: #aaa;
+}
+
+.detail-row strong {
+  color: #fff;
+  text-align: right;
+}
+
+.modal-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.danger-btn {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #ff6b6b;
+  color: #000;
+  cursor: pointer;
+}
+
+.ghost-btn {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}

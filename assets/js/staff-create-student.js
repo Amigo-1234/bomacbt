@@ -67,14 +67,19 @@ form.addEventListener("submit", async (e) => {
 
     // 2️⃣ Save student record
     await setDoc(doc(db, "users", uid), {
-      regNumber,
-      firstName,
-      surname,
-      session,
-      subjects: selectedSubjects,
-      role: "student",
-      createdAt: serverTimestamp()
-    });
+  regNumber,
+  firstName,
+  surname,
+  session,
+  subjects: selectedSubjects,
+  role: "student",
+  disabled: false,
+
+  // 🔐 STORE GENERATED PASSWORD (ADMIN VIEW ONLY)
+  initialPassword: password,
+
+  createdAt: serverTimestamp()
+});
 
     msg.style.color = "#00c878";
     msg.innerHTML = `

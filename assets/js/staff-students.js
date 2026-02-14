@@ -73,7 +73,10 @@ function renderStudents(data) {
 
       <td>
         <div class="actions">
-          <button class="action-btn view">👁</button>
+          <button class="action-btn icon-btn view-btn" data-id="${s.id}">
+            👁
+          </button>
+
           <button
             class="action-btn toggle"
             data-id="${s.id}"
@@ -86,6 +89,78 @@ function renderStudents(data) {
   `).join("");
 }
 
+const modal = document.getElementById("studentModal");
+const closeModal = document.getElementById("closeModal");
+const closeModal2 = document.getElementById("closeModal2");
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("view-btn")) {
+    const id = e.target.dataset.id;
+    const student = students.find(s => s.id === id);
+
+    document.getElementById("modalReg").textContent = student.regNumber;
+    document.getElementById("modalName").textContent =
+      `${student.firstName} ${student.surname}`;
+    document.getElementById("modalSession").textContent = student.session;
+    document.getElementById("modalSubjects").textContent =
+      student.subjects.join(", ");
+    document.getElementById("modalStatus").textContent =
+      student.disabled ? "Disabled" : "Active";
+
+      document.getElementById("modalPassword").textContent =
+  student.initialPassword || "Not available";
+
+    const toggleBtn = document.getElementById("toggleStatusBtn");
+    toggleBtn.textContent = student.disabled ? "Enable Student" : "Disable Student";
+
+    modal.classList.add("active");
+  }
+});
+
+[closeModal, closeModal2].forEach(btn =>
+  btn.addEventListener("click", () =>
+    modal.classList.remove("active")
+  )
+);
+
+const toggleStatusBtn = document.getElementById("toggleStatusBtn");
+let activeStudentId = null;
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("view-btn")) {
+    const id = e.target.dataset.id;
+    const student = students.find(s => s.id === id);
+    activeStudentId = id;
+
+    toggleStatusBtn.textContent =
+      student.disabled ? "Enable Student" : "Disable Student";
+  }
+});
+
+toggleStatusBtn.addEventListener("click", async () => {
+  if (!activeStudentId) return;
+
+  const student = students.find(s => s.id === activeStudentId);
+
+  try {
+    await updateDoc(doc(db, "users", activeStudentId), {
+      disabled: !student.disabled
+    });
+
+    students = students.map(s =>
+      s.id === activeStudentId
+        ? { ...s, disabled: !s.disabled }
+        : s
+    );
+
+    modal.classList.remove("active");
+    renderStudents(students);
+  } catch (err) {
+    alert("Failed to update student");
+    console.error(err);
+  }
+});
+
 /* ==========================
    ENABLE / DISABLE STUDENT
 ========================== */
@@ -96,12 +171,19 @@ table.addEventListener("click", async e => {
   const id = btn.dataset.id;
   const isDisabled = btn.dataset.disabled === "true";
 
+  const action = isDisabled ? "ENABLE" : "DISABLE";
+
+  const confirmed = confirm(
+    `Are you sure you want to ${action} this student?\n\nThis will affect their ability to log in.`
+  );
+
+  if (!confirmed) return;
+
   try {
     await updateDoc(doc(db, "users", id), {
       disabled: !isDisabled
     });
 
-    // update local state
     students = students.map(s =>
       s.id === id ? { ...s, disabled: !isDisabled } : s
     );

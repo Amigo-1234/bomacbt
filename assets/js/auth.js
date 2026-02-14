@@ -4,16 +4,16 @@ import { signInWithEmailAndPassword }
 import { doc, getDoc } 
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-const form = document.getElementById("candidateLoginForm");
+const form = document.querySelector(".login-form");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const regNumberInput = document.getElementById("regNumber").value.trim();
-  const password = document.getElementById("password").value;
+  const regInput = document.querySelector("input[type=text]").value.trim();
+  const password = document.querySelector("input[type=password]").value;
 
-  // 🔐 Normalize Reg Number → internal email
-  const normalizedReg = regNumberInput
+  // 🔐 Convert Reg Number → internal email
+  const normalizedReg = regInput
     .toLowerCase()
     .replace(/\s+/g, "")
     .replace(/[\/]/g, "_");
@@ -21,29 +21,36 @@ form.addEventListener("submit", async (e) => {
   const email = `${normalizedReg}@students.bia.edu.ng`;
 
   try {
-    // 🔑 Firebase Auth
     const cred = await signInWithEmailAndPassword(auth, email, password);
     const uid = cred.user.uid;
 
-    // 🔍 Verify user role
+    // 🔍 Fetch user record
     const userRef = doc(db, "users", uid);
     const userSnap = await getDoc(userRef);
 
     if (!userSnap.exists()) {
+      await auth.signOut();
       alert("Access denied.");
-      await auth.signOut();
       return;
     }
 
-    const userData = userSnap.data();
+    const user = userSnap.data();
 
-    if (userData.role !== "student") {
-      alert("Unauthorized access.");
+    // ❌ BLOCK DISABLED STUDENTS
+    if (user.disabled) {
       await auth.signOut();
+      alert("Your account has been disabled. Please contact the school.");
       return;
     }
 
-    // ✅ Success
+    // ✅ Ensure student role
+    if (user.role !== "student") {
+      await auth.signOut();
+      alert("Invalid login.");
+      return;
+    }
+
+    // ✅ ALL GOOD
     window.location.href = "dashboard.html";
 
   } catch (error) {
