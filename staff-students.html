@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BIA CBT – Students</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/staff-dashboard.css">
+</head>
+<body>
+
+<header class="staff-topbar">
+  <div class="logo">
+    <span>BIA</span><small>CBT</small>
+  </div>
+
+  <div class="topbar-right">
+    <span class="staff-name">Welcome, Admin</span>
+    <button class="logout-btn">Logout</button>
+  </div>
+</header>
+
+<div class="staff-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="staff-sidebar">
+    <nav>
+      <a href="staff-dashboard.html">📊 Dashboard</a>
+      <a>📚 Subjects</a>
+      <a>❓ Question Bank</a>
+      <a>🧪 Exams</a>
+      <a>📄 Results</a>
+
+      <a class="active">👥 Students</a>
+      <a href="staff-create-student.html" class="sub-link">➕ Add Student</a>
+
+      <a class="admin-only">👨‍🏫 Staff</a>
+      <a>⚙️ Settings</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="staff-main">
+
+    <section class="page-header">
+      <div>
+        <h2>Students</h2>
+        <p>Registered JUPEB candidates</p>
+      </div>
+
+      <a href="staff-create-student.html" class="primary-btn">
+        ➕ Add Student
+      </a>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="panel" style="margin-bottom:25px;">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input
+          id="studentSearch"
+          type="text"
+          class="table-search"
+          placeholder="Search by name or reg number..."
+        />
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="panel">
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Reg Number</th>
+            <th>Full Name</th>
+            <th>Session</th>
+            <th>Subjects</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="studentsTable">
+          <tr>
+            <td colspan="7" style="text-align:center;opacity:.6;">
+              Loading students...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<footer class="staff-footer">
+  © BIA – Boma Intellectual Academy
+</footer>
+
+<script type="module" src="assets/js/staff-students.js"></script>
+</body>
+</html>
