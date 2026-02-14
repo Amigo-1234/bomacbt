@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BIA CBT – Create Student</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/staff-dashboard.css">
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<header class="staff-topbar">
+  <div class="logo">
+    <span>BIA</span><small>CBT</small>
+  </div>
+
+  <div class="topbar-right">
+    <span class="staff-name">Welcome, Admin</span>
+    <button class="logout-btn">Logout</button>
+  </div>
+</header>
+
+<!-- ================= LAYOUT ================= -->
+<div class="staff-layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="staff-sidebar">
+  <nav>
+    <a href="staff-dashboard.html">📊 Dashboard</a>
+    <a href="staff-subjects.html">📚 Subjects</a>
+    <a href="staff-question-bank.html">❓ Question Bank</a>
+    <a href="staff-exams.html">🧪 Exams</a>
+    <a href="staff-results.html">📄 Results</a>
+
+
+  <a href="staff-students.html"
+     class="sidebar-parent">
+    👥 <span>Students</span>
+  </a>
+
+  <a href="staff-create-student.html"
+     class="sub-link active">
+    ➕ <span>Add Student</span>
+  </a>
+
+
+
+    <a href="staff.html" class="admin-only">👨‍🏫 Staff</a>
+    <a href="staff-settings.html">⚙️ Settings</a>
+  </nav>
+</aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="staff-main">
+
+    <section class="page-header">
+      <h2>Create New Student</h2>
+      <p>Register candidates and assign subjects</p>
+    </section>
+
+    <section class="panel form-panel">
+      <h3>Student Information</h3>
+
+      <form id="createStudentForm">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Registration Number</label>
+            <input id="regNumber" type="text" placeholder="BIA/JUPEB/001" required>
+          </div>
+
+          <div class="form-group">
+            <label>First Name</label>
+            <input id="firstName" type="text" placeholder="John" required>
+          </div>
+
+          <div class="form-group">
+            <label>Surname</label>
+            <input id="surname" type="text" placeholder="Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label>JUPEB Session</label>
+            <input id="session" type="text" value="2025/2026" readonly>
+          </div>
+
+        </div>
+
+        <!-- SUBJECT SELECTION -->
+        <div class="form-group">
+          <label>Select Subjects</label>
+
+          <div class="subjects-grid">
+            <div class="subject-card">Mathematics</div>
+            <div class="subject-card">Physics</div>
+            <div class="subject-card">Chemistry</div>
+          </div>
+
+          <small class="form-hint">
+            Click to select applicable JUPEB subjects
+          </small>
+        </div>
+
+        <!-- RESULT MESSAGE -->
+        <p id="resultMsg" style="margin-top:15px;"></p>
+
+        <!-- ACTION -->
+        <div class="form-actions">
+          <button type="submit" class="primary-btn">
+            Create Student
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+</div>
+
+<footer class="staff-footer">
+  ©️ BIA – Boma Intellectual Academy
+</footer>
+
+<!-- JS -->
+<script type="module" src="assets/js/staff-create-student.js"></script>
+</body>
+</html>

@@ -1,81 +1,53 @@
 import { auth, db } from "./firebase-config.js";
-import { 
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { signInWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { doc, getDoc } 
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-import { 
-  doc,
-  setDoc
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const form = document.getElementById("candidateLoginForm");
 
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-/* =========================
-   SIGNUP LOGIC
-========================= */
+  const regNumberInput = document.getElementById("regNumber").value.trim();
+  const password = document.getElementById("password").value;
 
-const signupForm = document.querySelector(".login-form");
+  // 🔐 Normalize Reg Number → internal email
+  const normalizedReg = regNumberInput
+    .toLowerCase()
+    .replace(/\s+/g, "")
+    .replace(/[\/]/g, "_");
 
-if (window.location.pathname.includes("candidate-signup.html")) {
+  const email = `${normalizedReg}@students.bia.edu.ng`;
 
-  signupForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  try {
+    // 🔑 Firebase Auth
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    const uid = cred.user.uid;
 
-    const fullName = signupForm.querySelectorAll("input")[0].value;
-    const email = signupForm.querySelectorAll("input")[1].value;
-    const phone = signupForm.querySelectorAll("input")[2].value;
-    const dob = signupForm.querySelectorAll("input")[3].value;
-    const password = signupForm.querySelectorAll("input")[4].value;
-    const confirmPassword = signupForm.querySelectorAll("input")[5].value;
+    // 🔍 Verify user role
+    const userRef = doc(db, "users", uid);
+    const userSnap = await getDoc(userRef);
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+    if (!userSnap.exists()) {
+      alert("Access denied.");
+      await auth.signOut();
       return;
     }
 
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+    const userData = userSnap.data();
 
-      // Save extra user data to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        fullName,
-        email,
-        phone,
-        dob,
-        role: "candidate",
-        createdAt: new Date()
-      });
-
-      alert("Account created successfully!");
-      window.location.href = "candidate-login.html";
-
-    } catch (error) {
-      alert(error.message);
+    if (userData.role !== "student") {
+      alert("Unauthorized access.");
+      await auth.signOut();
+      return;
     }
-  });
-}
 
+    // ✅ Success
+    window.location.href = "dashboard.html";
 
-/* =========================
-   LOGIN LOGIC
-========================= */
-
-if (window.location.pathname.includes("candidate-login.html")) {
-
-  signupForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const email = signupForm.querySelectorAll("input")[0].value;
-    const password = signupForm.querySelectorAll("input")[1].value;
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert("Login successful!");
-      window.location.href = "dashboard.html";
-
-    } catch (error) {
-      alert(error.message);
-    }
-  });
-}
+  } catch (error) {
+    console.error(error);
+    alert("Invalid registration number or password.");
+  }
+});
