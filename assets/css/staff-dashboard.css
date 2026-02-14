@@ -500,3 +500,61 @@ table tbody tr:hover .student-icon {
   color: #fff;
   cursor: pointer;
 }
+
+/* =====================
+   SUBJECTS PAGE FIX
+===================== */
+
+.primary-btn.small {
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+.search-panel {
+  margin-bottom: 20px;
+}
+
+.subjects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.subjects-table thead th {
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f9a602;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.subjects-table tbody td {
+  padding: 16px 14px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.subjects-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* ACTION BUTTON */
+.action-btn {
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 0.75rem;
+  border: 1px solid;
+  cursor: pointer;
+  background: transparent;
+}
+
+.action-btn.enable {
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.action-btn.disable {
+  color: #f9a602;
+  border-color: #f9a602;
+}

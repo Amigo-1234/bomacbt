@@ -3,6 +3,8 @@ import {
   createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
+  collection,
+  getDocs,
   doc,
   setDoc,
   serverTimestamp
@@ -10,26 +12,51 @@ import {
 
 const form = document.getElementById("createStudentForm");
 const msg = document.getElementById("resultMsg");
-const subjectCards = document.querySelectorAll(".subject-card");
+const subjectsGrid = document.getElementById("subjectsGrid");
 
 let selectedSubjects = [];
 
 /* ==========================
+   LOAD ACTIVE SUBJECTS
+========================== */
+async function loadSubjects() {
+  subjectsGrid.innerHTML = "Loading subjects...";
+
+  const snap = await getDocs(collection(db, "subjects"));
+
+  const subjects = snap.docs
+    .map(d => d.data())
+    .filter(s => s.active);
+
+  subjectsGrid.innerHTML = subjects.map(s => `
+    <div class="subject-card" data-subject="${s.name}">
+      ${s.name}
+    </div>
+  `).join("");
+
+  attachSubjectEvents();
+}
+
+/* ==========================
    SUBJECT SELECTION
 ========================== */
-subjectCards.forEach(card => {
-  card.addEventListener("click", () => {
-    const subject = card.textContent.trim();
+function attachSubjectEvents() {
+  const subjectCards = document.querySelectorAll(".subject-card");
 
-    card.classList.toggle("selected");
+  subjectCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const subject = card.dataset.subject;
 
-    if (selectedSubjects.includes(subject)) {
-      selectedSubjects = selectedSubjects.filter(s => s !== subject);
-    } else {
-      selectedSubjects.push(subject);
-    }
+      card.classList.toggle("selected");
+
+      if (selectedSubjects.includes(subject)) {
+        selectedSubjects = selectedSubjects.filter(s => s !== subject);
+      } else {
+        selectedSubjects.push(subject);
+      }
+    });
   });
-});
+}
 
 /* ==========================
    CREATE STUDENT
@@ -43,7 +70,7 @@ form.addEventListener("submit", async (e) => {
   const surname = document.getElementById("surname").value.trim();
   const session = document.getElementById("session").value.trim();
 
-  if (selectedSubjects.length === 0) {
+  if (!selectedSubjects.length) {
     msg.style.color = "red";
     msg.textContent = "Please select at least one subject.";
     return;
@@ -65,21 +92,21 @@ form.addEventListener("submit", async (e) => {
     const cred = await createUserWithEmailAndPassword(auth, email, password);
     const uid = cred.user.uid;
 
-    // 2️⃣ Save student record
+    // 2️⃣ Save Firestore record
     await setDoc(doc(db, "users", uid), {
-  regNumber,
-  firstName,
-  surname,
-  session,
-  subjects: selectedSubjects,
-  role: "student",
-  disabled: false,
+      regNumber,
+      firstName,
+      surname,
+      session,
+      subjects: selectedSubjects,
+      role: "student",
+      disabled: false,
 
-  // 🔐 STORE GENERATED PASSWORD (ADMIN VIEW ONLY)
-  initialPassword: password,
+      // 🔐 ADMIN-ONLY VIEW
+      initialPassword: password,
 
-  createdAt: serverTimestamp()
-});
+      createdAt: serverTimestamp()
+    });
 
     msg.style.color = "#00c878";
     msg.innerHTML = `
@@ -90,7 +117,8 @@ form.addEventListener("submit", async (e) => {
 
     form.reset();
     selectedSubjects = [];
-    subjectCards.forEach(card => card.classList.remove("selected"));
+    document.querySelectorAll(".subject-card")
+      .forEach(card => card.classList.remove("selected"));
 
   } catch (error) {
     console.error(error);
@@ -99,3 +127,6 @@ form.addEventListener("submit", async (e) => {
       "Error creating student. Reg number may already exist.";
   }
 });
+
+/* INIT */
+loadSubjects();
