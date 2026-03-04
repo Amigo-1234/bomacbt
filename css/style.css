@@ -70,16 +70,32 @@ body {
 }
 
 /* NAV LINKS */
-.nav-links a {
+.nav-links a{
   margin-left: 25px;
   text-decoration: none;
   color: var(--text-light);
   font-weight: 500;
-  transition: 0.3s ease;
+  position: relative;
+  transition: color .25s ease;
 }
 
-.nav-links a:hover {
-  color: var(--accent-gold);
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:#F59E0B;
+  transition: width .25s ease;
+}
+
+.nav-links a:hover{
+  color:#F59E0B;
+}
+
+.nav-links a:hover::after{
+  width:100%;
 }
 
 /* LOGIN BUTTON */
@@ -96,7 +112,8 @@ body {
 
 /* HERO SECTION */
 
-.hero {
+.hero{
+  position: relative;
   padding: 100px 0;
 }
 
@@ -113,17 +130,38 @@ body {
   min-width: 300px;
 }
 
-.hero-text h1 {
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 20px;
+.hero-text h1{
+  font-size: clamp(38px,5vw,52px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  letter-spacing: -0.5px;
+  max-width: 600px;
+  text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.hero-text h1{
+  font-size: clamp(38px,5vw,52px);
 }
 
 .hero-text p {
-  font-size: 16px;
-  color: #e5e7eb;
-  margin-bottom: 30px;
-  max-width: 500px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #d1d5db;
+  margin-bottom: 35px;
+  max-width: 520px;
+}
+
+.hero-text h1 span{
+  background: linear-gradient(90deg,#F59E0B,#FCD34D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+  padding-top: 20px;
 }
 
 .hero-buttons {
@@ -132,21 +170,39 @@ body {
   flex-wrap: wrap;
 }
 
-/* Buttons */
 
-.btn-primary {
-  padding: 12px 30px;
-  border-radius: 30px;
-  background: #F59E0B;
-  color: #2B0A0A;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s ease;
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background: radial-gradient(circle,#F59E0B20,transparent 70%);
+  top:-100px;
+  left:-150px;
+  z-index:0;
 }
 
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+.hero-container{
+  position:relative;
+  z-index:1;
+}
+
+/* Buttons */
+
+.btn-primary{
+  padding: 12px 30px;
+  border-radius: 30px;
+  background: linear-gradient(135deg,#F59E0B,#FCD34D);
+  color:#2B0A0A;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .25s ease;
+}
+
+.btn-primary:hover{
+  transform: translateY(-4px);
+  box-shadow:0 15px 30px rgba(245,158,11,.45);
 }
 
 .btn-outline {
@@ -174,13 +230,15 @@ body {
   min-width: 300px;
 }
 
-.hero-card {
-  background: rgba(58, 15, 15, 0.85);
+.hero-card{
+  background: rgba(58,15,15,.85);
   padding: 30px;
   border-radius: 20px;
   width: 300px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,.05);
+
+  box-shadow: 0 30px 60px rgba(0,0,0,.5);
 }
 
 .hero-card h3 {
@@ -195,11 +253,11 @@ body {
   margin: 15px 0;
 }
 
-.progress {
-  width: 65%;
-  height: 100%;
-  background: #F59E0B;
-  border-radius: 10px;
+.progress{
+  width:65%;
+  height:100%;
+  background: linear-gradient(90deg,#F59E0B,#FCD34D);
+  border-radius:10px;
 }
 
 /* HAMBURGER */
@@ -278,6 +336,15 @@ body {
   .hamburger{
     display: flex;
   }
+
+  .hero-container{
+  flex-direction: column;
+  text-align: center;
+}
+
+.hero-buttons{
+  justify-content:center;
+}
 
 }
 
