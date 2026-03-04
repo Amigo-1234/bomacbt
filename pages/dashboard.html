@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boma CBT Dashboard</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+<button class="sidebar-close" id="sidebarClose">✕</button>
+
+<div class="sidebar-logo">
+Boma<span>CBT</span>
+</div>
+
+<nav class="sidebar-nav">
+<a href="#" class="active">Dashboard</a>
+<a href="#">Practice Exam</a>
+<a href="#">Results</a>
+<a href="#">Leaderboard</a>
+<a href="#">Profile</a>
+<a href="#">Logout</a>
+</nav>
+
+</aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+<!-- =========================
+MAIN CONTENT
+========================= -->
+
+<main class="dashboard">
+
+<!-- HEADER -->
+
+<header class="dashboard-header">
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+
+<div>
+<h1>Welcome back, Daniel 👋</h1>
+<p>Track your CBT performance and keep improving.</p>
+</div>
+
+<div class="user-profile">
+<div class="avatar">D</div>
+</div>
+
+</header>
+
+
+<!-- =========================
+STATS CARDS
+========================= -->
+
+<section class="stats-cards">
+
+  <div class="stat-card">
+    <h3>Exams Taken</h3>
+    <p>15</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>Average Score</h3>
+    <p>72%</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>Best Subject</h3>
+    <p>Physics</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>Study Streak</h3>
+    <p>6 Days</p>
+  </div>
+
+</section>
+
+
+<!-- =========================
+PERFORMANCE
+========================= -->
+
+<section class="performance">
+
+  <h2>Performance Overview</h2>
+
+  <div class="progress-item">
+    <span>Mathematics</span>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:70%"></div>
+    </div>
+  </div>
+
+  <div class="progress-item">
+    <span>English</span>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:65%"></div>
+    </div>
+  </div>
+
+  <div class="progress-item">
+    <span>Physics</span>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:80%"></div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- =========================
+AVAILABLE SUBJECTS
+========================= -->
+
+<section class="subjects-dashboard">
+
+  <h2>Available Subjects</h2>
+
+  <div class="subjects-grid">
+
+    <div class="subject-card">
+      <h3>Mathematics</h3>
+      <p>500 Questions</p>
+      <button>Start Exam</button>
+    </div>
+
+    <div class="subject-card">
+      <h3>English</h3>
+      <p>450 Questions</p>
+      <button>Start Exam</button>
+    </div>
+
+    <div class="subject-card">
+      <h3>Physics</h3>
+      <p>320 Questions</p>
+      <button>Start Exam</button>
+    </div>
+
+    <div class="subject-card">
+      <h3>Chemistry</h3>
+      <p>380 Questions</p>
+      <button>Start Exam</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+RECENT RESULTS
+========================= -->
+
+<section class="recent-results">
+
+  <h2>Recent Results</h2>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Exam</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Math Mock 1</td>
+        <td>72%</td>
+        <td>Mar 3</td>
+      </tr>
+
+      <tr>
+        <td>English Mock</td>
+        <td>65%</td>
+        <td>Mar 1</td>
+      </tr>
+
+      <tr>
+        <td>Physics Test</td>
+        <td>80%</td>
+        <td>Feb 28</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>
+
+
+<!-- =========================
+LEADERBOARD
+========================= -->
+
+<section class="leaderboard">
+
+  <h2>Top Students</h2>
+
+  <ol>
+    <li>David — 95%</li>
+    <li>Sarah — 92%</li>
+    <li>You — 88%</li>
+  </ol>
+
+</section>
+
+
+</main>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
