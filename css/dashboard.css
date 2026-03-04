@@ -43,6 +43,10 @@ body{
 }
 
 .sidebar-nav a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
   text-decoration:none;
   color:#d1d5db;
 
@@ -55,11 +59,19 @@ body{
 .sidebar-nav a:hover{
   background:rgba(245,158,11,0.15);
   color:white;
+
+  transform:translateX(4px);
 }
 
 .sidebar-nav .active{
-  background:rgba(245,158,11,0.2);
+  background:linear-gradient(
+    135deg,
+    rgba(245,158,11,0.25),
+    rgba(245,158,11,0.1)
+  );
+
   color:#F59E0B;
+  font-weight:600;
 }
 
 /* =========================
@@ -288,46 +300,31 @@ body{
    MOBILE SIDEBAR
 ========================= */
 
-.menu-toggle{
-  display:none;
-  font-size:24px;
-  background:none;
-  border:none;
-  color:white;
-  cursor:pointer;
-  margin-right:15px;
-}
 
 /* CLOSE BUTTON */
 
 /* CLOSE BUTTON */
 
 .sidebar-close{
-  display:none;
-
   position:absolute;
   top:20px;
   right:20px;
 
-  width:36px;
-  height:36px;
+  width:34px;
+  height:34px;
+
+  border-radius:8px;
 
   background:rgba(255,255,255,0.08);
   border:none;
 
   color:white;
-  font-size:18px;
-
-  border-radius:8px;
-
   cursor:pointer;
 
+  display:flex;
   align-items:center;
   justify-content:center;
-
-  transition:0.2s ease;
 }
-
 
 /* MOBILE */
 
