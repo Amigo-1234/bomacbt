@@ -28,8 +28,15 @@ body {
 }
 
 /* NAVBAR */
+
 .navbar {
-  padding: 20px 0;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  background: rgba(43, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 1000;
 }
 
 .nav-container {
@@ -195,57 +202,85 @@ body {
   border-radius: 10px;
 }
 
+/* HAMBURGER */
+
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  justify-content: center;
+  gap: 6px;
   cursor: pointer;
-  margin-left: auto;
+  padding: 6px;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #F59E0B;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* animation */
+
+.hamburger.active span:nth-child(1){
+  transform: rotate(45deg) translate(6px,6px);
+}
+
+.hamburger.active span:nth-child(2){
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3){
+  transform: rotate(-45deg) translate(6px,-6px);
 }
 
 @media (max-width: 900px) {
 
-  .nav-links {
+  .nav-container{
+    position: relative;
+  }
+
+  .nav-links{
     position: absolute;
-    top: 70px;
-    right: 0;
-    background: #2B0A0A;
+    top: 100%;
+    left: 0;
     width: 100%;
+    background: #2B0A0A;
+
     flex-direction: column;
     align-items: center;
-    padding: 30px 0;
-    display: none;
+    gap: 28px;
+
+    padding: 40px 0;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.3s ease;
   }
 
-  .nav-links a {
-    margin: 15px 0;
+  .nav-links.active{
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  .hamburger {
+  .nav-links a{
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .hamburger{
     display: flex;
   }
 
 }
-  /* NAV FIX */
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: #2B0A0A;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 0;
-    display: none;
-  }
 
-  .nav-links a {
-    margin: 15px 0;
-  }
-
-  .hamburger {
-    display: flex;
-  }
 
 
 /* ===== STATS SECTION ===== */
@@ -491,20 +526,4 @@ body {
   padding-top: 30px;
   border-top: 1px solid rgba(255,255,255,0.05);
   font-size: 14px;
-}
-/* ===== HAMBURGER ===== */
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #F59E0B;
-  border-radius: 2px;
-  transition: 0.3s ease;
 }
